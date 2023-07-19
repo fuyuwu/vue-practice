@@ -25,13 +25,10 @@ export default {
       }
     }
   },
-  computed: {
-
-  }
 }
 </script>
 
-<style>
+<style scoped>
 #container {
   padding-bottom: 20px;
   border-bottom: 1px solid #aaa;
