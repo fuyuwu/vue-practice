@@ -1,8 +1,10 @@
 <template>
   <div class="hello">
-    <h1>{{ msg }}</h1>
-    <input type="text" @keypress="reverseText" v-model="text"/>
+    <h3>{{ msg }}</h3>
+    <input type="text" @keypress="reverseText" v-model="text" />
     <div>{{ reverseText }}</div>
+    <!-- <div v-html="rawHtml" class='text'>{{ rawHtml }}</div> -->
+    <!-- 直接使用 v-html 會易造成xss攻擊 -->
   </div>
 </template>
 
@@ -11,7 +13,8 @@ export default {
   name: 'HelloWorld',
   data() {
     return {
-      text: ''
+      text: '',
+      rawHtml: `<span class='text'>用html呈現文字</span>`
     }
   },
   props: {
@@ -43,4 +46,9 @@ li {
 
 a {
   color: #42b983;
-}</style>
+}
+
+.text {
+  color: red;
+}
+</style>
