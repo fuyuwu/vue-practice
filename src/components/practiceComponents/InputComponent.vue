@@ -3,11 +3,11 @@
     <h1>InputComponent</h1>
     <p class="msg">Message is: {{ message }}</p>
     <div>
-      <input type="text" class="form-control" v-model="message" @keyup.enter="reverseText" />
+      <input v-model="message" type="text" class="form-control" @keyup.enter="reverseText">
       <button @click.prevent="reverseText">Reverse</button>
-      <input v-bind:value="newMsg" />
+      <input :value="newMsg">
       <div>
-        <input type="checkbox" id="checkbox" v-model="checked" />
+        <input id="checkbox" v-model="checked" type="checkbox">
         <label for="checkbox">{{ checked }}</label>
       </div>
     </div>
@@ -18,7 +18,7 @@
 <script lang="ts">
 
 export default {
-  name: 'inputComponent',
+  name: 'InputComponent',
   data() {
     return {
       message: '',
