@@ -1,8 +1,8 @@
 <template lang="">
-  <div class='my-4'>
-    <div class='box' :style="[styleObj1, styleObj2]"></div>
-    <div class='box' :class="{whiteBg: !whiteBg}"></div>
-    <button @click="classObj['bg-[#ffff]'] = true" class='rounded-md p-4 bg-green-700 text-white w-full'>CLICK</button>
+  <div class="my-4">
+    <div class="box" :style="[styleObj1, styleObj2]" />
+    <div class="box" :class="{whiteBg: !whiteBg}" />
+    <button class="rounded-md p-4 bg-green-700 text-white w-full" @click="classObj['bg-[#ffff]'] = true">CLICK</button>
   </div>
 </template>
 <script lang="ts">

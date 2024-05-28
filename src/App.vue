@@ -1,11 +1,11 @@
 <template>
   <div id="app">
     <div class="appContainer">
-      <div>
-        <button class="btn" @click="practiceStatus = !practiceStatus">練習</button>
-        <button class="btn" @click="openDialog = !openDialog">編輯</button>
-        <button class="btn" @click="tabStatus = !tabStatus">TabList</button>
-        <button class="btn" @click="carouselStatus = !carouselStatus">Slider</button>
+      <div class="flex align-middle justify-center">
+        <img width="80" height="80" src="./assets/logo.png" alt="">
+        <div class="flex flex-col">
+          <button v-for="(item, key) in MAIN_TAB" :key="item.id + key" class="btn" @click="handleClickStatus(item.id)">{{ item.name }}</button>
+        </div>
       </div>
       <div class="componentsBlock">
         <PracticeComponents v-if="practiceStatus" :isShow="practiceStatus" />
@@ -33,7 +33,19 @@ export default {
       practiceStatus: false,
       openDialog: false,
       tabStatus: false,
-      carouselStatus: false
+      carouselStatus: false,
+      mainStatus: 'Practice',
+      MAIN_TAB: [
+        { id: 'Practice', name: '練習' },
+        { id: 'Dialog', name: '編輯' },
+        { id: 'Tabs', name: '頁籤們' },
+        { id: 'Slider', name: 'Slider' },
+      ]
+    }
+  },
+  computed: {
+    showContainer() {
+      return this.MAIN_TAB.find(item => item.id === this.mainStatus)
     }
   },
   watch: {
@@ -69,6 +81,29 @@ export default {
   methods: {
     handleStatus() {
       this.openDialog = false
+    },
+    handleClickStatus(status) {
+      this.MAIN_TAB.forEach((item) => {
+        if (item.id === status) {
+          switch (status) {
+            case 'Practice':
+              this.practiceStatus = !this.practiceStatus
+              break;
+            case 'Dialog':
+              this.openDialog = !this.openDialog
+              break;
+            case 'Tabs':
+              this.tabStatus = !this.tabStatus
+              break;
+            case 'Slider':
+              this.carouselStatus = !this.carouselStatus
+              break;
+            default:
+              break;
+          }
+          this.mainStatus = status
+        }
+      })
     }
   }
 }
@@ -76,7 +111,7 @@ export default {
 
 <style>
 body {
-  background-color: #2c3e50;
+  background-color: #000000;
 }
 
 #app {
@@ -84,8 +119,8 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
-  margin: 60px 0;
+  color: #d09706;
+  margin: 60px;
   overflow-y: auto;
   display: flex;
   flex-direction: column;
@@ -102,6 +137,7 @@ body {
 
 .componentsBlock {
   position: relative;
+  flex: 1;
 }
 
 .test {
@@ -127,5 +163,20 @@ button.confirm {
 
 .btn {
   margin: 20px;
+  border: none;
+  border-radius: 10px;
+  padding: 10px 20px;
+  cursor: pointer;
+  background-color: #2c3e50;
+}
+
+.btn.active {
+  background-color: rgb(253, 143, 0);
+  color: #fff;
+}
+
+.btn:hover {
+  background-color: rgb(253, 143, 0);
+  color: #fff;
 }
 </style>

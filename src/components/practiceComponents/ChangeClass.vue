@@ -1,9 +1,9 @@
 <template>
   <div id="container">
-    <h1>ChangeClass</h1>
+    <p class="p-5">ChangeClass</p>
     <div class="flex">
-      <div class="box" :class="{ 'rotate': isActive }"></div>
-      <button class="btn" @click="isActive = !isActive">我是按鈕！</button>
+      <div class="box" :class="{ 'rotate': isActive }" />
+      <button class="btn mt-3" @click="isActive = !isActive">我是按鈕！</button>
     </div>
   </div>
 </template>
@@ -53,8 +53,6 @@ export default {
 
 .btn {
   margin:20px;
-  width: 80px;
-  height: 45px;
   background-color: rgb(253, 143, 0);
   border: none;
   border-radius: 10px;

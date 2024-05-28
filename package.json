@@ -24,7 +24,9 @@
     "eslint": "^7.32.0",
     "eslint-plugin-vue": "^8.0.3",
     "vue-cli-plugin-tailwind": "~3.0.0",
-    "vue-template-compiler": "^2.6.14"
+    "vue-template-compiler": "^2.6.14",
+    "bignumber.js": "^9.0.2",
+    "clipboard": "1.7.1"
   },
   "eslintConfig": {
     "root": true,

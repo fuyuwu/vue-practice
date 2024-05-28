@@ -1,7 +1,7 @@
 <template>
   <div id="Checkboxes">
     <div>what is your favorite animals?<span v-for="item, i in checkboxArray" :key="i"> {{ item }} </span></div>
-    <form class="form-control">
+    <form class="form-control flex justify-center">
       <div class="form-check">
         <input id="checkbox1" type="checkbox" v-model="checkboxArray" value="狗" />
         <label for="checkbox1">狗</label>
@@ -40,5 +40,8 @@ export default {
 #Checkboxes {
   padding-bottom: 20px;
   border-bottom: 1px solid #aaa;
+}
+.form-check {
+  padding: 10px;
 }
 </style>

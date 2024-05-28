@@ -1,7 +1,9 @@
 <template>
   <div class="hello">
     <h3>{{ msg }}</h3>
-    <input type="text" @keypress="reverseText" v-model="text" />
+    <form>
+      <input v-model="text" type="text" @keypress.native="reverseText">
+    </form>
     <div>{{ reverseText }}</div>
     <!-- <div v-html="rawHtml" class='text'>{{ rawHtml }}</div> -->
     <!-- 直接使用 v-html 會易造成xss攻擊 -->
@@ -11,17 +13,21 @@
 <script>
 export default {
   name: 'HelloWorld',
+  props: {
+    msg: {
+      type: String,
+      default: ''
+    }
+  },
   data() {
     return {
       text: '',
-      rawHtml: `<span class='text'>用html呈現文字</span>`
+      // rawHtml: `<span class='text'>用html呈現文字</span>`
     }
-  },
-  props: {
-    msg: String
   },
   computed: {
     reverseText: function () {
+      if (!this.text) return
       return this.text.split('').reverse().join('')
     }
   }
