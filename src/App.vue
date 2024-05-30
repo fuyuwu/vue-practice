@@ -11,6 +11,7 @@
         <PracticeComponents v-if="practiceStatus" :isShow="practiceStatus" />
         <EditDialog v-if="openDialog" :dialogVisitable="openDialog" @close="handleStatus" />
         <Tabs v-if="tabStatus" :childTabs="tabStatus" />
+        <Buttons v-if="buttonsStatus" />
       </div>
     </div>
   </div>
@@ -20,13 +21,15 @@
 import PracticeComponents from './components/practiceComponents/index'
 import EditDialog from './components/EditDialog'
 import Tabs from './components/Tabs'
+import Buttons from './components/Basic/Buttons.vue'
 
 export default {
   name: 'App',
   components: {
     PracticeComponents,
     EditDialog,
-    Tabs
+    Tabs,
+    Buttons
   },
   data() {
     return {
@@ -34,12 +37,14 @@ export default {
       openDialog: false,
       tabStatus: false,
       carouselStatus: false,
+      buttonsStatus: false,
       mainStatus: 'Practice',
       MAIN_TAB: [
         { id: 'Practice', name: '練習' },
         { id: 'Dialog', name: '編輯' },
         { id: 'Tabs', name: '頁籤們' },
         { id: 'Slider', name: 'Slider' },
+        { id: 'Buttons', name: '按鈕們' }
       ]
     }
   },
@@ -97,6 +102,9 @@ export default {
               break;
             case 'Slider':
               this.carouselStatus = !this.carouselStatus
+              break;
+            case 'Buttons':
+              this.buttonsStatus = !this.buttonsStatus
               break;
             default:
               break;
